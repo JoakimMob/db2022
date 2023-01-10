@@ -47,7 +47,7 @@ erDiagram
         int GradeId
         string name
     }
-    ```
+```
 
 
 # db2022
