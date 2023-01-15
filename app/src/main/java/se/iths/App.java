@@ -3,12 +3,20 @@
  */
 package se.iths;
 
+import java.sql.SQLException;
+import java.util.Collection;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    public static void main(String[] args) throws SQLException {
+      App app = new App();
+      try {
+          app.load();
+      } catch (SQLException e) {
+          System.err.printf("Något gick fel vid inläsning av databas! (%s)%n", e);
+      }
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    private void load() throws SQLException {
+        
     }
 }
