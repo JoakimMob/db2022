@@ -1,7 +1,6 @@
 # db2022
 
 ```
-
 erDiagram
 
     Student ||--o{ Phone : has
@@ -50,5 +49,4 @@ erDiagram
         int StudentId
         int HobbyId
     }
-
 ``` 
