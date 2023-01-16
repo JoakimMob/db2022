@@ -49,7 +49,11 @@ public class App {
             String firstName = rs.getString(SQL_COL_STUDENT_FIRSTNAME);
             Student student = new Student(studentId, firstName,lastName);
             students.add(student);
-
+            Collection<School> schools = loadSchools(student.getStudentId());
+            for (School school : schools) {
+                student.add(school);
+            }
         }
     }
+
 }

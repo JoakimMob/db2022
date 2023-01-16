@@ -15,6 +15,10 @@ public class Student {
         this.lastName = lastName;
     }
 
+    public void add(School school) {
+        schools.add(school);
+    }
+
     public int getStudentId() {
         return studentId;
     }
