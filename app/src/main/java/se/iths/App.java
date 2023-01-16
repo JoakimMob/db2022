@@ -3,10 +3,7 @@
  */
 package se.iths;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -54,6 +51,28 @@ public class App {
                 student.add(school);
             }
         }
+        rs.close();
+        con.close();
+        return students;
+    }
+
+    private Collection<School> loadSchools(long studentId) throws SQLException{
+        Connection con = DriverManager.getConnection(JDBC_Connection, JDBC_User, JDBC_PASSWORD);
+        Collection<School> schools = new ArrayList<>();
+        PreparedStatement statement = con.prepareStatement(SQL_SELECT_SCHOOL_FOR_STUDENTS);
+        statement.setLong(1, studentId);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()){
+            int schoolId = (int) rs.getLong(SQL_COL_SCHOOL_ID);
+            String name = rs.getString(SQL_COL_SCHOOL_NAME);
+            String city = rs.getString(SQL_COL_SCHOOL_CITY);
+            School school = new School(schoolId, name, city);
+            schools.add(school);
+        }
+        rs.close();
+        statement.close();
+        con.close();
+        return schools;
     }
 
 }
