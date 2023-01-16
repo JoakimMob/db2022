@@ -49,4 +49,4 @@ erDiagram
         int StudentId
         int HobbyId
     }
-    ``` 
+``` 
