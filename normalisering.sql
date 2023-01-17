@@ -114,16 +114,15 @@ JOIN Hobby ON Hobby.Name = StudentIdHobbyName.Hobby;
 /* School Grade */
 
 DROP TABLE IF EXISTS Grade;
-CREATE TABLE Grade AS SELECT 0 as GradeId, Grade AS Name FROM (
-    SELECT DISTINCT CASE WHEN Grade LIKE "%som%" THEN "Awesome"
-                WHEN Grade LIKE "%class" THEN "First Class"
-                WHEN Grade = "Admirable" THEN "Admirable"
-                WHEN Grade LIKE "Gorg%" THEN "Gorgeous" 
-                WHEN Grade = "Best" THEN "Best"
-                WHEN Grade LIKE "%ellent" THEN "Excellent"
-                WHEN Grade = "Profound" THEN "Profound" 
-            END AS Grade FROM UNF
-    ) AS Grade WHERE Grade IS NOT NULL;
+CREATE TABLE Grade AS SELECT 0 AS GradeId, Grade AS Name FROM (
+SELECT DISTINCT CASE 
+	WHEN Grade LIKE "%some" THEN "Awesome"
+	WHEN Grade LIKE "%able" THEN "Admirable"
+	WHEN Grade LIKE "%lent" THEN "Excellent"
+	WHEN Grade LIKE "%lass" THEN "First class"
+	WHEN Grade LIKE "%est" THEN "Best"
+	END AS Grade FROM UNF
+) AS Grade WHERE Grade IS NOT NULL;
 SET @id = 0;
 UPDATE Grade SET GradeId = (SELECT @id := @id + 1);
 ALTER TABLE Grade ADD PRIMARY KEY(GradeId);
