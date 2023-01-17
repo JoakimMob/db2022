@@ -77,13 +77,6 @@ UNION SELECT ID As StudentId, "Mobile" AS Type, MobilePhone2 as Number FROM UNF
 WHERE MobilePhone2 IS NOT NULL AND MobilePhone2 != ''
 ;
 
-
-/* PhoneList View */
-
-DROP VIEW IF EXISTS PhoneList;
-CREATE VIEW PhoneList AS SELECT CONCAT(FirstName, ' ', LastName) as Name, group_concat(Number) AS Numbers FROM Phone JOIN Student using(StudentId) GROUP BY StudentId;
-
-
 /* School Hobby */
 
 DROP TABLE IF EXISTS Hobby;
